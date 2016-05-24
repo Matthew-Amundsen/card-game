@@ -1,17 +1,45 @@
+//----Initializing Variables---------------------------------------------//
+
+var playersDeck = [
+  {cardID:1, name:"Card 1", attackType:"infantry"},
+  {cardID:2, name:"Card 2", attackType:"infantry"},
+  {cardID:3, name:"Card 3", attackType:"infantry"},
+  {cardID:4, name:"Card 4", attackType:"infantry"},
+  {cardID:5, name:"Card 5", attackType:"infantry"},
+  {cardID:6, name:"Card 6", attackType:"ranged"},
+  {cardID:7, name:"Card 7", attackType:"ranged"},
+  {cardID:8, name:"Card 8", attackType:"ranged"},
+  {cardID:9, name:"Card 9", attackType:"ranged"},
+  {cardID:10, name:"Card 10", attackType:"ranged"},
+  {cardID:11, name:"Card 11", attackType:"siege"},
+  {cardID:12, name:"Card 12", attackType:"siege"},
+  {cardID:13, name:"Card 13", attackType:"siege"},
+  {cardID:14, name:"Card 14", attackType:"siege"},
+  {cardID:15, name:"Card 15", attackType:"siege"},
+];
+
+var playersHand = [];
+
+var playersInfantry = [];
+var playersRanged = [];
+var playersSiege = [];
+
+//----Coin Flip---------------------------------------------//
+
 function flipCoin(playerValue) {
   var computerRandomNumber = Math.round(Math.random());
 
-//  console.log(playerValue);
-//  console.log(computerRandomNumber);
+  console.log(playerValue);
+  console.log(computerRandomNumber);
 
   if (playerValue == computerRandomNumber) {
-//    console.log("You won");
+    console.log("You won");
     document.getElementById("pResult").innerHTML = "player number was " + playerValue;
     document.getElementById("cResult").innerHTML = "computer number was " + computerRandomNumber;
     document.getElementById("result").innerHTML = "You won";
     return true;
   } else {
-//    console.log("You lost");
+    console.log("You lost");
     document.getElementById("pResult").innerHTML = "player number was " + playerValue;
     document.getElementById("cResult").innerHTML = "computer number was " + computerRandomNumber;
     document.getElementById("result").innerHTML = "You lost";
@@ -44,43 +72,9 @@ function shuffle(array) {
 //-----------------------------------------------------------------------//
 //------------Card Drawing Function--------------------------------------//
 
-function drawToHand(playersDeck, playersHand) {
-  var turn = 0;
-  if (turn === 0) {
-    var draw = playersDeck.splice(0,3);
-  } else {
-    var draw = playersDeck.splice(0,1);
-  }
-
-  return playersHand.concat(draw);;
+function moveCards(startLocation, endLocation, cardPosition) {
+  return endLocation.splice(0, 0, startLocation[cardPosition]);
 }
-
-
-//----Initializing Variables---------------------------------------------//
-
-var playersDeck = [
-  {cardID:"001", name:"Card 1", attackType:"infantry"},
-  {cardID:"002", name:"Card 2", attackType:"infantry"},
-  {cardID:"003", name:"Card 3", attackType:"infantry"},
-  {cardID:"004", name:"Card 4", attackType:"infantry"},
-  {cardID:"005", name:"Card 5", attackType:"infantry"},
-  {cardID:"006", name:"Card 6", attackType:"ranged"},
-  {cardID:"007", name:"Card 7", attackType:"ranged"},
-  {cardID:"008", name:"Card 8", attackType:"ranged"},
-  {cardID:"009", name:"Card 9", attackType:"ranged"},
-  {cardID:"010", name:"Card 10", attackType:"ranged"},
-  {cardID:"011", name:"Card 11", attackType:"siege"},
-  {cardID:"012", name:"Card 12", attackType:"siege"},
-  {cardID:"013", name:"Card 13", attackType:"siege"},
-  {cardID:"014", name:"Card 14", attackType:"siege"},
-  {cardID:"015", name:"Card 15", attackType:"siege"},
-];
-
-var playersHand = [];
-
-var playersInfantry = [];
-var playersRanged = [];
-var playersSiege = [];
 
 
 //-----------------------------------------------------------------------//
@@ -90,6 +84,18 @@ var playersSiege = [];
 //-----------------------------------------------------------------------//
 //-----------------Draw 3 Cards------------------------------------------//
 
-console.log(drawToHand(playersDeck,playersHand));
+shuffle(playersDeck);
+console.log(playersDeck);
+console.log(playersHand);
+
+moveCards(playersDeck,playersHand,0);
+
+console.log(playersHand);
+
+// console.log(playersHand);
+// console.log(playersInfantry);
+// console.log(playersRanged);
+// console.log(playersSiege);
+
 
 //-----------------------------------------------------------------------//
