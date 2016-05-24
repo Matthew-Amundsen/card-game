@@ -73,7 +73,9 @@ function shuffle(array) {
 //------------Card Drawing Function--------------------------------------//
 
 function moveCards(startLocation, endLocation, cardPosition) {
-  return endLocation.splice(0, 0, startLocation[cardPosition]);
+  var result = endLocation.splice(0, 0, startLocation[cardPosition]);
+  var removed = startLocation.splice(0, 1);
+  return result;
 }
 
 
@@ -89,8 +91,11 @@ console.log(playersDeck);
 console.log(playersHand);
 
 moveCards(playersDeck,playersHand,0);
+moveCards(playersDeck,playersHand,0);
+moveCards(playersDeck,playersHand,0);
 
 console.log(playersHand);
+console.log(playersDeck);
 
 // console.log(playersHand);
 // console.log(playersInfantry);
