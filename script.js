@@ -86,21 +86,28 @@ function moveCards(startLocation, endLocation, cardPosition) {
 //-----------------------------------------------------------------------//
 //-----------------Draw 3 Cards------------------------------------------//
 
-shuffle(playersDeck);
-console.log(playersDeck);
-console.log(playersHand);
+  shuffle(playersDeck);
 
-moveCards(playersDeck,playersHand,0);
-moveCards(playersDeck,playersHand,0);
-moveCards(playersDeck,playersHand,0);
+  moveCards(playersDeck,playersHand,0);
+  moveCards(playersDeck,playersHand,0);
+  moveCards(playersDeck,playersHand,0);
 
-console.log(playersHand);
-console.log(playersDeck);
-
-// console.log(playersHand);
-// console.log(playersInfantry);
-// console.log(playersRanged);
-// console.log(playersSiege);
+  console.log(playersHand);
 
 
 //-----------------------------------------------------------------------//
+//----------Displays Players Hand----------------------------------------//
+
+for (var key in playersHand) {
+  if (playersDeck.hasOwnProperty(key)) {
+    var newDiv = document.createElement("div");
+    var newCardName = document.createTextNode(playersHand[key].name);
+
+    newDiv.className = "card";
+    newDiv.appendChild(newCardName); //add the text node to the newly created div.
+
+    // add the newly created element and its content into the DOM 
+    var currentDiv = document.getElementById("div1");
+    document.body.insertBefore(newDiv, currentDiv);
+  }
+}
